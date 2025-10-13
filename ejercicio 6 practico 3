@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero, copia, digito, valido;
+
+    cout << "Introduce un numero entero: ";
+    cin >> numero;
+    copia = numero;
+
+    while (copia > 0) {
+        digito = copia % 10;
+        if (digito > 7) {
+            valido = 0;
+            break;
+        }
+        copia = copia / 10;
+    }
+
+    if (valido == 1) {
+        cout << "Todos los digitos son validos para la base 8." << endl;
+    } else {
+        cout << "El numero contiene digitos no validos para la base 8." << endl;
+    }
+
+    return 0;
+}
