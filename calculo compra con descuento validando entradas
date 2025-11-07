@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+  float precio, cantidad;
+  float subtotal, montodescuento, total, descuento;
+  do{
+      cout<<"Ingrese el precio unitario del producto: ";
+      cin>>precio;
+      if(precio<=0)
+        cout<<"El precio no puede ser un numero negativo, ingreselo nuevamente."<<endl;
+  }while(precio<=0);
+  do{
+      cout<<"Ingrese la cantidad del producto: ";
+      cin>>cantidad;
+      if(cantidad<=0)
+      cout<<"La cantidad no puede ser un numero negativo, ingreselo nuevamente."<<endl;
+  }while(cantidad<=0);
+  do{
+      cout<<"Ingrese el porcentaje de descuento (debe ponerlo en decimales, ej, 0.10 para 10%): ";
+      cin>>descuento;
+      if(descuento<0 || descuento>1)
+      cout<<"El descuento no puede ser un numero negativo y debe escribirlo en decimales.Ingreselo nuevamente."<<endl;
+  }while(descuento<0 || descuento>1);
+  subtotal=precio*cantidad;
+  montodescuento=subtotal*descuento;
+  total=subtotal-montodescuento;
+  cout<<"El subtotal de su compra es: "<<subtotal<<endl;
+  cout<<"El monto de descuento es: "<<montodescuento<<endl;
+  cout<<"El total a pagar es: "<<total;
+    return 0;
+}
