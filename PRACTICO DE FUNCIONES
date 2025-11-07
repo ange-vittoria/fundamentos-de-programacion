@@ -1,0 +1,496 @@
+PREGUNTA  1
+#include <stdio.h>
+#include <math.h>
+
+float POTEN(float x, float y) {
+    return pow(x, y);
+}
+
+int main() {
+    float x, y;
+    printf("Ingrese el valor de x: ");
+    scanf("%f", &x);
+    printf("Ingrese el valor de y: ");
+    scanf("%f", &y);
+
+    printf("%.2f elevado a %.2f es %.2f\n", x, y, POTEN(x, y));
+    return 0;
+}
+PREGUNTA  2
+
+#include <stdio.h>
+
+long FAC(int n) {
+    if (n < 0)
+        return -1; // no existe factorial negativo
+    long factorial = 1;
+    for (int i = 1; i <= n; i++) {
+        factorial *= i;
+    }
+    return factorial;
+}
+
+int main() {
+    int n;
+    printf("Ingrese un número entero: ");
+    scanf("%d", &n);
+
+    if (n < 0)
+        printf("No existe el factorial de un número negativo.\n");
+    else
+        printf("El factorial de %d es %ld\n", n, FAC(n));
+
+    return 0;
+}
+PREGUNTA  3
+#include <stdio.h>
+#include <math.h>
+
+long double FAC(int n) {
+    long double f = 1;
+    for (int i = 1; i <= n; i++) {
+        f *= i;
+    }
+    return f;
+}
+
+long double SERIE(int x, int N) {
+    long double S = 0;
+    for (int i = 1; i <= N; i++) {
+        S += pow(x, i) / FAC(i);
+    }
+    return S;
+}
+
+int main() {
+    int x, N;
+    printf("Ingrese el valor de x: ");
+    scanf("%d", &x);
+    printf("Ingrese el valor de N: ");
+    scanf("%d", &N);
+
+    printf("La suma de la serie es: %.6Lf\n", SERIE(x, N));
+    return 0;
+}
+PREGUNTA  4
+#include <stdio.h>
+#include <math.h>
+
+long double FAC(int n) {
+    long double f = 1;
+    for (int i = 1; i <= n; i++) {
+        f *= i;
+    }
+    return f;
+}
+
+long double SERIE(int x, int N) {
+    long double S = 0;
+    int signo = 1; 
+
+    for (int i = 1; i <= N; i += 2) { 
+        S += signo * pow(x, i) / FAC(i);
+        signo *= -1; 
+    }
+    return S;
+}
+
+int main() {
+    int x, N;
+    printf("Ingrese el valor de x: ");
+    scanf("%d", &x);
+    printf("Ingrese el valor de N (impar): ");
+    scanf("%d", &N);
+
+    printf("La suma de la serie es: %.6Lf\n", SERIE(x, N));
+    return 0;
+}
+PREGUNTA  5
+#include <stdio.h>
+
+void resolver_sistema(float A, float B, float C, float D, float E, float F) {
+    float det = A * E - B * D;
+
+    if (det == 0) {
+        printf("No tiene solucion unica (determinante = 0)\n");
+        return;
+    }
+
+    float det_x = (B * F - C * E);
+    float det_y = (C * D - A * F);
+
+    float x = det_x / det;
+    float y = det_y / det;
+
+    printf("x = %.3f\n", x);
+    printf("y = %.3f\n", y);
+}
+
+int main() {
+    float A, B, C, D, E, F;
+
+    printf("Ingrese A, B, C, D, E, F separados por espacios: ");
+    scanf("%f %f %f %f %f %f", &A, &B, &C, &D, &E, &F);
+
+    resolver_sistema(A, B, C, D, E, F);
+    return 0;
+}
+PREGUNTA  6
+#include <stdio.h>
+
+void LITERAL(int dia, int mes, int anio) {
+    char *meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+    if (anio < 100)
+        anio += (anio >= 50) ? 1900 : 2000;
+
+    if (mes < 1 || mes > 12) {
+        printf("Mes inválido\n");
+        return;
+    }
+
+    printf("%d de %s de %d\n", dia, meses[mes - 1], anio);
+}
+
+int main() {
+    int d, m, a;
+    printf("Ingrese día, mes, año: ");
+    scanf("%d %d %d", &d, &m, &a);
+
+    LITERAL(d, m, a);
+    return 0;
+}
+PREGUNTA  7
+#include <stdio.h>
+long long FAC(int n) {
+    long long f = 1;
+    for (int i = 1; i <= n; i++) {
+        f *= i;
+    }
+    return f;
+}
+
+int main() {
+    int n, r;
+    double C;
+
+    printf("Ingrese el valor de n: ");
+    scanf("%d", &n);
+    printf("Ingrese el valor de r: ");
+    scanf("%d", &r);
+
+    if (r > n || n < 0 || r < 0) {
+        printf("Error: los valores deben cumplir 0 <= r <= n\n");
+        return 0;
+    }
+
+    C = (double)FAC(n) / (FAC(r) * FAC(n - r));
+    printf("El número combinatorio C(%d, %d) es: %.0f\n", n, r, C);
+
+    return 0;
+}
+PREGUNTA  8
+#include <iostream>
+#include <cmath>  // Para sqrt() y fabs()
+using namespace std;
+
+void resolverEcuacionCuadratica(double a, double b, double c) {
+    if (a == 0) {
+        cout << "No es una ecuacion cuadratica, a no puede ser 0." << endl;
+        return;
+    }
+
+    double discriminante = b*b - 4*a*c;
+
+    cout << "Ecuacion: " << a << "x^2 + " << b << "x + " << c << " = 0" << endl;
+
+    if (discriminante > 0) {
+        double x1 = (-b + sqrt(discriminante)) / (2*a);
+        double x2 = (-b - sqrt(discriminante)) / (2*a);
+        cout << "Existen dos raices reales diferentes:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    } 
+    else if (fabs(discriminante) < 1e-9) {
+        double x = -b / (2*a);
+        cout << "Existe una raiz doble:" << endl;
+        cout << "x = " << x << endl;
+    } 
+    else {
+        // Dos raíces complejas conjugadas
+        double parteReal = -b / (2*a);
+        double parteImaginaria = sqrt(-discriminante) / (2*a);
+        cout << "Existen dos raices complejas:" << endl;
+        cout << "x1 = " << parteReal << " + " << parteImaginaria << "i" << endl;
+        cout << "x2 = " << parteReal << " - " << parteImaginaria << "i" << endl;
+    }
+}
+
+int main() {
+    double a, b, c;
+    cout << "Ingrese los coeficientes a, b y c: ";
+    cin >> a >> b >> c;
+
+    resolverEcuacionCuadratica(a, b, c);
+
+    return 0;
+}
+PREGUNTA  9
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int binarioADecimal(long long binario) {
+    int decimal = 0;
+    int potencia = 0;
+
+    while (binario != 0) {
+        int digito = binario % 10;          
+        decimal += digito * pow(2, potencia); 
+        binario /= 10;                       
+        potencia++;                           
+    }
+
+    return decimal;
+}
+
+int main() {
+    long long binario;
+    cout << "Ingrese un numero binario: ";
+    cin >> binario;
+
+    int resultado = binarioADecimal(binario);
+
+    cout << "El equivalente decimal es: " << resultado << endl;
+
+    return 0;
+}
+PREGUNTA  10
+#include <iostream>
+using namespace std;
+
+void convertirARomanos(int N) {
+    // Arreglos con los valores romanos y sus equivalentes decimales
+    int valores[]    = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    string romanos[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    if (N <= 0 || N > 3999) {
+        cout << "Numero fuera de rango (1 - 3999)" << endl;
+        return;
+    }
+
+    cout << "El numero " << N << " en numeros romanos es: ";
+
+    for (int i = 0; i < 13; i++) {
+        while (N >= valores[i]) {
+            cout << romanos[i];
+            N -= valores[i];
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int numero;
+    cout << "Ingrese un numero (1 - 3999): ";
+    cin >> numero;
+
+    convertirARomanos(numero);
+
+    return 0;
+}
+PREGUNTA  11
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+string convertirCientos(int n) {
+    string unidades[] = {"", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"};
+    string decenas[] = {"", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"};
+    string especiales[] = {"once","doce","trece","catorce","quince","dieciseis","diecisiete","dieciocho","diecinueve"};
+    string centenas[] = {"","cien","doscientos","trescientos","cuatrocientos","quinientos","seiscientos","setecientos","ochocientos","novecientos"};
+    
+    string resultado = "";
+    int c = n / 100;
+    int resto = n % 100;
+    
+    if (c > 0) {
+        if (c == 1 && resto == 0) resultado += "cien";
+        else resultado += centenas[c];
+        if (resto > 0) resultado += " ";
+    }
+    
+    if (resto > 10 && resto < 20) {
+        resultado += especiales[resto - 11];
+    } else {
+        int d = resto / 10;
+        int u = resto % 10;
+        if (d > 0) {
+            if (d == 1 && u == 0) resultado += "diez";
+            else if (d != 1) resultado += decenas[d];
+            if (u > 0) resultado += " y ";
+        }
+        if (u > 0) resultado += unidades[u];
+    }
+    
+    return resultado;
+}
+
+string numeroALiteral(double numero) {
+    if (numero < 0 || numero >= 10000) return "Numero fuera de rango (0-9999.99)";
+
+    int entero = (int)numero;
+    int decimales = round((numero - entero) * 100);
+
+    string resultado = "";
+
+    int miles = entero / 1000;
+    int resto = entero % 1000;
+    if (miles > 0) {
+        if (miles == 1) resultado += "un mil ";
+        else resultado += convertirCientos(miles) + " mil ";
+    }
+
+    if (resto > 0) {
+        resultado += convertirCientos(resto) + " ";
+    }
+
+    resultado += (decimales < 10 ? "0" : "") + to_string(decimales) + "/100 bolivianos";
+
+    return resultado;
+}
+
+int main() {
+    double numero;
+    cout << "Ingrese un numero (hasta 9999.99): ";
+    cin >> numero;
+
+    string literal = numeroALiteral(numero);
+    cout << literal << endl;
+
+    return 0;
+}
+PREGUNTA  12
+#include <iostream>
+using namespace std;
+
+bool esBisiesto(int anio) {
+    return (anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0));
+}
+
+bool validarFecha(int dia, int mes, int anio) {
+    if (anio < 1) return false;       // Año debe ser positivo
+    if (mes < 1 || mes > 12) return false; // Mes válido
+
+    int diasMes;
+
+    switch(mes) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            diasMes = 31; break;
+        case 4: case 6: case 9: case 11:
+            diasMes = 30; break;
+        case 2:
+            diasMes = esBisiesto(anio) ? 29 : 28;
+            break;
+        default:
+            return false;
+    }
+
+    if (dia < 1 || dia > diasMes) return false;
+
+    return true;
+}
+
+int main() {
+    int dia, mes, anio;
+    cout << "Ingrese dia, mes y anio: ";
+    cin >> dia >> mes >> anio;
+
+    if (validarFecha(dia, mes, anio))
+        cout << "La fecha " << dia << "/" << mes << "/" << anio << " es valida." << endl;
+    else
+        cout << "La fecha " << dia << "/" << mes << "/" << anio << " es invalida." << endl;
+
+    return 0;
+}
+PREGUNTA  13
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double redondear(double R, int n) {
+    double factor = pow(10, n); // 10^n
+    return round(R * factor) / factor;
+}
+
+int main() {
+    double numero;
+    int decimales;
+
+    cout << "Ingrese un numero real: ";
+    cin >> numero;
+
+    cout << "Ingrese el numero de decimales: ";
+    cin >> decimales;
+
+    double resultado = redondear(numero, decimales);
+    cout << "Numero redondeado: " << resultado << endl;
+
+    return 0;
+}
+PREGUNTA  14
+#include <iostream>
+using namespace std;
+bool esBisiesto(int anio) {
+    return (anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0));
+}
+int diasEnMes(int mes, int anio) {
+    switch(mes) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12: return 31;
+        case 4: case 6: case 9: case 11: return 30;
+        case 2: return esBisiesto(anio) ? 29 : 28;
+        default: return 0;
+    }
+}
+
+int fechaADias(int dia, int mes, int anio) {
+    int totalDias = dia;
+
+    for (int m = 1; m < mes; m++) {
+        totalDias += diasEnMes(m, anio);
+    }
+
+    for (int a = 1; a < anio; a++) {
+        totalDias += esBisiesto(a) ? 366 : 365;
+    }
+
+    return totalDias;
+}
+
+void diasEntreFechas(int d1, int m1, int a1, int d2, int m2, int a2) {
+    int dias1 = fechaADias(d1, m1, a1);
+    int dias2 = fechaADias(d2, m2, a2);
+
+    int diferencia = dias2 - dias1;
+    if (diferencia < 0) diferencia = -diferencia;
+
+    cout << "Dias transcurridos entre las fechas: " << diferencia << endl;
+}
+
+int main() {
+    int dia1, mes1, anio1;
+    int dia2, mes2, anio2;
+
+    cout << "Ingrese la primera fecha (dia mes anio): ";
+    cin >> dia1 >> mes1 >> anio1;
+
+    cout << "Ingrese la segunda fecha (dia mes anio): ";
+    cin >> dia2 >> mes2 >> anio2;
+
+    diasEntreFechas(dia1, mes1, anio1, dia2, mes2, anio2);
+
+    return 0;
+}
+
