@@ -1,0 +1,656 @@
+PREGUNTA 1
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n); // Usamos double para poder ingresar enteros o reales
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    double maxValor = vec[0]; // Inicializamos con el primer elemento
+    for(int i = 1; i < n; i++) {
+        if(vec[i] > maxValor) {
+            maxValor = vec[i];
+        }
+    }
+
+    cout << "El valor máximo del vector es: " << maxValor << endl;
+
+    return 0;
+}
+PREGUNTA 2
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n); 
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    double minValor = vec[0]; 
+    for(int i = 1; i < n; i++) {
+        if(vec[i] < minValor) {
+            minValor = vec[i];
+        }
+    }
+
+    cout << "El valor mínimo del vector es: " << minValor << endl;
+
+    return 0;
+}
+PREGUNTA 3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n); 
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    double suma = 0.0;
+    for(int i = 0; i < n; i++) {
+        suma += vec[i]; 
+    }
+
+    double promedio = suma / n; 
+    cout << "El promedio del vector es: " << promedio << endl;
+
+    return 0;
+}
+PREGUNTA 4
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> original(n); 
+    vector<double> invertido(n); 
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> original[i];
+    }
+
+    
+    for(int i = 0; i < n; i++) {
+        invertido[i] = original[n - 1 - i];
+    }
+
+    cout << "Vector original: ";
+    for(double val : original) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    cout << "Vector invertido: ";
+    for(double val : invertido) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 5
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<int> vec(n);
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    bool esCapicua = true; 
+    for(int i = 0; i < n / 2; i++) {
+        if(vec[i] != vec[n - 1 - i]) {
+            esCapicua = false; 
+            break;
+        }
+    }
+
+    if(esCapicua) {
+        cout << "El vector es capicúa." << endl;
+    } else {
+        cout << "El vector NO es capicúa." << endl;
+    }
+
+    return 0;
+}
+
+PREGUNTA 6
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    if(n < 3) {
+        cout << "Se necesitan al menos 3 elementos para calcular promedios consecutivos." << endl;
+        return 0;
+    }
+
+    vector<double> vec(n);
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    cout << "Promedios de cada tres valores consecutivos:\n";
+    for(int i = 0; i <= n - 3; i++) {
+        double promedio = (vec[i] + vec[i+1] + vec[i+2]) / 3.0;
+        cout << "P" << i+1 << " = " << promedio << endl;
+    }
+
+    return 0;
+}
+PREGUNTA 7
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Ingrese un número entre 0 y 20: ";
+    cin >> num;
+
+    string texto;
+
+    switch(num) {
+        case 0: texto = "CERO"; break;
+        case 1: texto = "UNO"; break;
+        case 2: texto = "DOS"; break;
+        case 3: texto = "TRES"; break;
+        case 4: texto = "CUATRO"; break;
+        case 5: texto = "CINCO"; break;
+        case 6: texto = "SEIS"; break;
+        case 7: texto = "SIETE"; break;
+        case 8: texto = "OCHO"; break;
+        case 9: texto = "NUEVE"; break;
+        case 10: texto = "DIEZ"; break;
+        case 11: texto = "ONCE"; break;
+        case 12: texto = "DOCE"; break;
+        case 13: texto = "TRECE"; break;
+        case 14: texto = "CATORCE"; break;
+        case 15: texto = "QUINCE"; break;
+        case 16: texto = "DIECISÉIS"; break;
+        case 17: texto = "DIECISIETE"; break;
+        case 18: texto = "DIECIOCHO"; break;
+        case 19: texto = "DIECINUEVE"; break;
+        case 20: texto = "VEINTE"; break;
+        default: texto = "Número fuera de rango"; break;
+    }
+
+    cout << "Número literal: " << texto << endl;
+
+    return 0;
+}
+PREGUNTA 8
+#include <iostream>
+#include <vector>
+#include <cmath> 
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    if(n < 2) {
+        cout << "Se necesitan al menos 2 elementos para calcular diferencias." << endl;
+        return 0;
+    }
+
+    vector<double> vec(n);
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    double maxDiferencia = abs(vec[1] - vec[0]); 
+    for(int i = 1; i < n - 1; i++) {
+        double diff = abs(vec[i+1] - vec[i]);
+        if(diff > maxDiferencia) {
+            maxDiferencia = diff;
+        }
+    }
+
+    cout << "La diferencia más grande entre elementos consecutivos es: " << maxDiferencia << endl;
+
+    return 0;
+}
+PREGUNTA 9
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m;
+    cout << "Ingrese el tamaño del primer vector: ";
+    cin >> n;
+    vector<double> A(n);
+    cout << "Ingrese los elementos del primer vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> A[i];
+    }
+
+    cout << "Ingrese el tamaño del segundo vector: ";
+    cin >> m;
+    vector<double> B(m);
+    cout << "Ingrese los elementos del segundo vector:\n";
+    for(int i = 0; i < m; i++) {
+        cin >> B[i];
+    }
+
+    vector<double> C;
+    C.reserve(n + m); 
+    for(int i = 0; i < n; i++) {
+        C.push_back(A[i]);
+    }
+    for(int i = 0; i < m; i++) {
+        C.push_back(B[i]);
+    }
+
+    cout << "Vector concatenado: ";
+    for(double val : C) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 10
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m;
+    cout << "Ingrese el tamaño del primer vector (A): ";
+    cin >> n;
+    vector<double> A(n);
+    cout << "Ingrese los elementos del vector A (ascendente):\n";
+    for(int i = 0; i < n; i++) {
+        cin >> A[i];
+    }
+
+    cout << "Ingrese el tamaño del segundo vector (B): ";
+    cin >> m;
+    vector<double> B(m);
+    cout << "Ingrese los elementos del vector B (ascendente):\n";
+    for(int i = 0; i < m; i++) {
+        cin >> B[i];
+    }
+
+    vector<double> C;
+    C.reserve(n + m);
+
+    int i = 0, j = 0;
+    while(i < n && j < m) {
+        if(A[i] <= B[j]) {
+            C.push_back(A[i]);
+            i++;
+        } else {
+            C.push_back(B[j]);
+            j++;
+        }
+    }
+    while(i < n) {
+        C.push_back(A[i]);
+        i++;
+    }
+    while(j < m) {
+        C.push_back(B[j]);
+        j++;
+    }
+    cout << "Vector intercalado y ordenado: ";
+    for(double val : C) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 11
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n);
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    int positivos = 0, negativos = 0, ceros = 0;
+
+    for(int i = 0; i < n; i++) {
+        if(vec[i] > 0) {
+            positivos++;
+        } else if(vec[i] < 0) {
+            negativos++;
+        } else {
+            ceros++;
+        }
+    }
+
+    cout << "Cantidad de positivos: " << positivos << endl;
+    cout << "Cantidad de negativos: " << negativos << endl;
+    cout << "Cantidad de ceros: " << ceros << endl;
+
+    return 0;
+}
+PREGUNTA 12
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<int> vec(n);
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    vector<int> sinDuplicados;
+
+    for(int i = 0; i < n; i++) {
+        bool encontrado = false;
+        for(int j = 0; j < sinDuplicados.size(); j++) {
+            if(vec[i] == sinDuplicados[j]) {
+                encontrado = true;
+                break;
+            }
+        }
+        if(!encontrado) {
+            sinDuplicados.push_back(vec[i]);
+        }
+    }
+
+    cout << "Vector sin duplicados: ";
+    for(int val : sinDuplicados) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 13
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n);
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    for(int i = 0; i < n / 2; i++) {
+        double temp = vec[i];
+        vec[i] = vec[n - 1 - i];
+        vec[n - 1 - i] = temp;
+    }
+
+    cout << "Vector invertido: ";
+    for(double val : vec) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 14
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    vector<double> vec(n); 
+
+    cout << "Ingrese los elementos del vector:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    sort(vec.begin(), vec.end());
+
+    cout << "Vector ordenado ascendentemente: ";
+    for(double val : vec) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+PREGUNTA 15
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de alumnos: ";
+    cin >> n;
+
+    vector<string> alumnos(n);
+    vector<double> notas(n);
+
+    cout << "Ingrese los nombres de los alumnos:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> alumnos[i];
+    }
+
+    cout << "Ingrese las notas correspondientes:\n";
+    for(int i = 0; i < n; i++) {
+        cin >> notas[i];
+    }
+
+    
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - 1 - i; j++) {
+            if(notas[j] < notas[j + 1]) {
+                
+                double tempNota = notas[j];
+                notas[j] = notas[j + 1];
+                notas[j + 1] = tempNota;
+
+                string tempAlumno = alumnos[j];
+                alumnos[j] = alumnos[j + 1];
+                alumnos[j + 1] = tempAlumno;
+            }
+        }
+    }
+
+    cout << "Las tres mejores notas son:\n";
+    for(int i = 0; i < 3 && i < n; i++) {
+        cout << alumnos[i] << " -> " << notas[i] << endl;
+    }
+
+    return 0;
+}
+PREGUNTA 16
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm> 
+using namespace std;
+
+int main() {
+    vector<string> alumnos;
+    vector<double> notas;
+    int opcion;
+
+    do {
+        cout << "\n--- MENU DE ALUMNOS ---\n";
+        cout << "1) Ingresar un alumno y su nota\n";
+        cout << "2) Listar los alumnos\n";
+        cout << "3) Ordenar alfabéticamente\n";
+        cout << "4) Sacar la mejor nota\n";
+        cout << "5) Sacar el promedio de notas\n";
+        cout << "6) Salir\n";
+        cout << "Ingrese una opción: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1: {
+                string nombre;
+                double nota;
+                cout << "Ingrese el nombre del alumno: ";
+                cin >> nombre;
+                cout << "Ingrese la nota: ";
+                cin >> nota;
+                alumnos.push_back(nombre);
+                notas.push_back(nota);
+                break;
+            }
+            case 2: {
+                cout << "\nLista de alumnos:\n";
+                for(int i = 0; i < alumnos.size(); i++) {
+                    cout << alumnos[i] << " -> " << notas[i] << endl;
+                }
+                break;
+            }
+            case 3: {
+                // Ordenamos alfabéticamente manteniendo relación con notas
+                for(int i = 0; i < alumnos.size() - 1; i++) {
+                    for(int j = 0; j < alumnos.size() - 1 - i; j++) {
+                        if(alumnos[j] > alumnos[j + 1]) {
+                            swap(alumnos[j], alumnos[j + 1]);
+                            swap(notas[j], notas[j + 1]);
+                        }
+                    }
+                }
+                cout << "Alumnos ordenados alfabéticamente.\n";
+                break;
+            }
+            case 4: {
+                if(notas.empty()) {
+                    cout << "No hay alumnos registrados.\n";
+                    break;
+                }
+                double mejorNota = notas[0];
+                string alumnoMejor = alumnos[0];
+                for(int i = 1; i < notas.size(); i++) {
+                    if(notas[i] > mejorNota) {
+                        mejorNota = notas[i];
+                        alumnoMejor = alumnos[i];
+                    }
+                }
+                cout << "La mejor nota es: " << mejorNota << " del alumno " << alumnoMejor << endl;
+                break;
+            }
+            case 5: {
+                if(notas.empty()) {
+                    cout << "No hay alumnos registrados.\n";
+                    break;
+                }
+                double suma = 0;
+                for(double n : notas) suma += n;
+                double promedio = suma / notas.size();
+                cout << "El promedio de notas es: " << promedio << endl;
+                break;
+            }
+            case 6: {
+                cout << "Saliendo del programa...\n";
+                break;
+            }
+            default:
+                cout << "Opción no válida. Intente nuevamente.\n";
+        }
+
+    } while(opcion != 6);
+
+    return 0;
+}
+PREGUNTA 17
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de números de Fibonacci a generar: ";
+    cin >> n;
+
+    if(n <= 0) {
+        cout << "El número debe ser mayor que 0.\n";
+        return 0;
+    }
+
+    vector<long long> fibonacci(n); // Usamos long long para números grandes
+    if(n >= 1) fibonacci[0] = 0;
+    if(n >= 2) fibonacci[1] = 1;
+
+    for(int i = 2; i < n; i++) {
+        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+    }
+
+    cout << "Los primeros " << n << " números de Fibonacci son:\n";
+    for(long long num : fibonacci) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
